@@ -226,7 +226,7 @@ namespace kyasu
         }
         static size_t formatIdLength( const std::string& id )
         {
-            bool zero_padding = id[1] == '0';
+            const bool zero_padding = id[1] == '0';
             
             switch( id[id.size()-1] )
             {
@@ -263,12 +263,12 @@ namespace kyasu
             va_list args;
             va_start(args, format);
 
-            size_t size = strlen(format);
-            for( size_t i=0; i<size; ++i )
+            const size_t length = strlen(format);
+            for( size_t i=0; i<length; ++i )
             {
                 if( format[i] == '%' )
                 {
-                    std::string id = formatId(format, i);
+                    const std::string id = formatId(format, i);
                     const char id_back = id[id.size()-1];
                     
                     switch( id_back )
