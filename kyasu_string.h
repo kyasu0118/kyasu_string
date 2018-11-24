@@ -37,7 +37,7 @@ namespace kyasu
         string(){}
         string( const char* str ) : std::string( str ){}
         string( const std::string& str ) : std::string( str ){}
-        operator const char*(){ return c_str(); }
+        operator const char*() const{ return c_str(); }
 
         std::string substring(int beginIndex, int endIndex) const
         {
@@ -214,6 +214,7 @@ namespace kyasu
                     case 'c':
                     case 'd':
                     case 'f':
+                    case 'o':
                     case 'X':
                     case 'x':
                     case 's':
@@ -229,7 +230,11 @@ namespace kyasu
             
             switch( id[id.size()-1] )
             {
+                case 'c':
+                    return 1;
                 case 'd':
+                case 'u':
+                case 'o':
                 case 'x':
                 case 'X':
                     if( zero_padding )
@@ -268,7 +273,12 @@ namespace kyasu
                     
                     switch( id_back )
                     {
+                        case 'c':
+                            result += (char)va_arg(args, int);
+                            break;
                         case 'd':
+                        case 'u':
+                        case 'o':
                         case 'x':
                         case 'X':
                         case 'f':
