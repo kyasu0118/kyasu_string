@@ -245,7 +245,7 @@ namespace kyasu
                             return (size_t)atoi( &id[i+1] ) + 32;
                         }
                     }
-                    break;
+                    return 32;
             }
             throw format_id_exception(id.c_str());
         }
@@ -299,11 +299,11 @@ namespace kyasu
                 {
                     const size_t count = charCount( &format[i] );
                     
-                    for( ; i<count; ++i )
+                    for( size_t j=0; j<count; ++j )
                     {
-                        result += format[i];
+                        result += format[i+j];
                     }
-                    --i;
+                    i += count - 1;
                 }
             }
             va_end(args);
