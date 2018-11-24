@@ -1,6 +1,8 @@
 # kyasu_string
 "include" 1 file. C++ std::string wrapper class.
 
+# example
+
 ```
 #include <iostream>
 #include "kyasu_string.h"
