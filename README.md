@@ -1,8 +1,7 @@
 # kyasu_string
 "include" 1 file. C++ std::string wrapper class.
 
-#include "kyasu_string.h"
-
+```
 #include <iostream>
 #include "kyasu_string.h"
 
@@ -20,3 +19,4 @@ int main(int argc, const char * argv[]) {
 
     return 0;
 }
+```
