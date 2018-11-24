@@ -2,7 +2,6 @@
 "include" 1 file. C++ std::string wrapper class.
 
 # example
-
 ```
 #include <iostream>
 #include "kyasu_string.h"
@@ -23,4 +22,12 @@ int main(int argc, const char * argv[]) {
 
     return 0;
 }
+```
+# result
+```
+ABC,DEF,GDE
+abc,def,gde
+ABCdefGDE
+ABC:def:GDE
+test=10 0.500000 hoge
 ```
