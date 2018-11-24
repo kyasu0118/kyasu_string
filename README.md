@@ -19,6 +19,8 @@ int main(int argc, const char * argv[]) {
 
     std::cout << str.replace(",", ":") << std::endl;
 
+    std::cout << kyasu::string::format( "test=%d %f %s", 10, 0.5f, "hoge" ) << std::endl;
+
     return 0;
 }
 ```
