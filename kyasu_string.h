@@ -39,7 +39,7 @@ namespace kyasu
         string( const std::string& str ) : std::string( str ){}
         operator const char*() const{ return c_str(); }
 
-        std::string substring(int beginIndex, int endIndex) const
+        std::string substring( int beginIndex, int endIndex ) const
         {
             if( beginIndex < 0 || beginIndex > endIndex || endIndex > this->size())
             {
@@ -57,14 +57,14 @@ namespace kyasu
             return &result[0];
         }
 
-        int indexOf( const std::string& delimiter ) const
+        int indexOf( const std::string& search ) const
         {
-            for( int i=0; i<size()-delimiter.size(); ++i )
+            for( int i=0; i<size()-search.size(); ++i )
             {
                 bool find = true;
-                for( int j=0; j<delimiter.size(); ++j )
+                for( int j=0; j<search.size(); ++j )
                 {
-                    if( (*this)[i+j] != delimiter[j] )
+                    if( (*this)[i+j] != search[j] )
                     {
                         find = false;
                         break;
@@ -78,17 +78,17 @@ namespace kyasu
             return -1;
         }
 
-        std::vector<std::string> split( const std::string& delimiter ) const
+        std::vector<std::string> split( const std::string& separator ) const
         {
             std::vector<std::string> result;
             int index = 0;
             string buffer = *this;
             string buffer_temp;
             
-            while( (index = buffer.indexOf( delimiter )) >= 0 )
+            while( (index = buffer.indexOf( separator )) >= 0 )
             {
                 result.emplace_back( buffer.substring(0, index) );
-                buffer_temp = &buffer[ index + delimiter.size() ];
+                buffer_temp = &buffer[ index + separator.size() ];
                 buffer = buffer_temp;
             }
             result.emplace_back( buffer );
