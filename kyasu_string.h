@@ -112,7 +112,7 @@ namespace kyasu
             return result + buffer;
         }
 
-        std::string toLowerCase() const
+        std::string toLower() const
         {
             std::vector<char> result( size() + 1 );
             
@@ -136,7 +136,7 @@ namespace kyasu
             return &result[0];
         }
         
-        std::string toUpperCase() const
+        std::string toUpper() const
         {
             std::vector<char> result( size() + 1 );
             
@@ -169,20 +169,8 @@ namespace kyasu
             if( bin[0] & 0x80 )
             {
                 result = 2;
-
-                // hankaku kana. It is not perfect.
-                if( bin[0] >= 0xc2 && bin[0] <= 0xdf )
-                {
-                    if( (0b11000000 & bin[1]) != 0b10000000 )
-                    {
-                        result = 1;
-                    }
-                }
-                else if( (0b11100000 & bin[0]) == 0b11000000 )
-                {
-                    result = 2;
-                }
-                else if( (0b11110000 & bin[0]) == 0b11100000 )
+                
+                if( (0b11110000 & bin[0]) == 0b11100000 )
                 {
                     if( (0b11000000 & bin[1]) == 0b10000000 &&
                         (0b11000000 & bin[2]) == 0b10000000 )
@@ -200,7 +188,6 @@ namespace kyasu
                     }
                 }
             }
-            
             return result;
         }
         static std::string formatId( const char* text, size_t& index )
