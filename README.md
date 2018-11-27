@@ -10,8 +10,8 @@ int main(int argc, const char * argv[]) {
 
     kyasu::string str = "ABC,def,GDE";
 
-    std::cout << str.toUpperCase() << std::endl;
-    std::cout << str.toLowerCase() << std::endl;
+    std::cout << str.toUpper() << std::endl;
+    std::cout << str.toLower() << std::endl;
     
     auto s = str.split(",");
     std::cout << s[0] << s[1] << s[2] << std::endl;
